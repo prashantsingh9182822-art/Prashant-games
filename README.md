@@ -94,22 +94,103 @@
 <script>
     // अपडेटेड गेम लिस्ट - जो आपकी साइट के अंदर 100% चलेगी
 const myGames = [
-    { name: "Subway Surfers",icon: "🏃", 
-        // पोकी की जगह गेमपिक्स का लिंक, जो ब्लॉक नहीं होता
-        url: "https://www.gamepix.com/live/subway-surfers" 
-    },
-    { name: "Ludo Legend",icon: "🎲", 
-        url: "https://www.gamepix.com/live/ludo-legend" 
-    },
-    { name: "Candy Riddle",icon: "🍬", 
-        url: "https://www.gamepix.com/live/candy-riddles" 
-    },
-    { name: "Moto X3M",icon: "🏍️", 
-        url: "https://www.gamepix.com/live/moto-x3m" 
-    },
-    { name: "Pac-Man",icon: "🍕", 
-        url: "https://www.google.com/logos/2010/pacman10-i.html" 
+    {<style>
+    .game-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        font-family: sans-serif;
     }
+    .game-card {
+        background: #f0f0f0;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.3s;
+        border: 2px solid #ddd;
+    }
+    .game-card:hover {
+        transform: translateY(-5px);
+        background: #e0e0e0;
+        border-color: #ff5722;
+    }
+    .game-icon { font-size: 50px; display: block; margin-bottom: 10px; }
+    .game-name { font-weight: bold; color: #333; }
+
+    /* गेम विंडो (Overlay) */
+    #webgame-container {
+        display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+        background:black; z-index:10000;
+    }
+    #game-frame { width:100%; height:calc(100% - 50px); border:none; }
+    .top-bar {
+        background: #222; color: white; padding: 10px 20px;
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .close-btn {
+        background: #ff4444; color: white; border: none; 
+        padding: 8px 15px; cursor: pointer; border-radius: 5px;
+    }
+</style>
+
+<div class="game-grid" id="game-list-container">
+    </div>
+
+<div id="webgame-container">
+    <div class="top-bar">
+        <span id="current-game-title">Game Name</span>
+        <button class="close-btn" onclick="closeGame()">बन्द करें X</button>
+    </div>
+    <iframe id="game-frame" src="" allowfullscreen></iframe>
+</div>
+
+<script>
+    const myGames = [
+        { name: "Subway Surfers", icon: "🏃", url: "https://www.gamepix.com/live/subway-surfers" },
+        { name: "Ludo Legend", icon: "🎲", url: "https://www.gamepix.com/live/ludo-legend" },
+        { name: "Candy Riddle", icon: "🍬", url: "https://www.gamepix.com/live/candy-riddles" },
+        { name: "Moto X3M", icon: "🏍️", url: "https://www.gamepix.com/live/moto-x3m" },
+        { name: "Pac-Man", icon: "🍕", url: "https://www.google.com/logos/2010/pacman10-i.html" }
+    ];
+
+    const listContainer = document.getElementById("game-list-container");
+
+    // गेम्स को स्क्रीन पर दिखाना
+    myGames.forEach(game => {
+        const card = document.createElement("div");
+        card.className = "game-card";
+        card.onclick = () => openWebGame(game.url, game.name);
+        card.innerHTML = `
+            <span class="game-icon">${game.icon}</span>
+            <span class="game-name">${game.name}</span>
+        `;
+        listContainer.appendChild(card);
+    });
+
+    function openWebGame(url, title) {
+        const container = document.getElementById("webgame-container");
+        const frame = document.getElementById("game-frame");
+        document.getElementById("current-game-title").innerText = "Loading: " + title;
+        
+        frame.src = url; 
+        container.style.display = "block";
+        document.body.style.overflow = "hidden";
+
+        frame.onload = () => {
+            document.getElementById("current-game-title").innerText = title;
+        };
+    }
+
+    function closeGame() {
+        const container = document.getElementById("webgame-container");
+        const frame = document.getElementById("game-frame");
+        container.style.display = "none";
+        frame.src = ""; 
+        document.body.style.overflow = "auto";
+    }
+</script>
 ];
 
 // बेहतर डायरेक्ट ओपन फंक्शन
