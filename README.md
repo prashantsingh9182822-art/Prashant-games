@@ -94,30 +94,20 @@
 <script>
     // अपडेटेड गेम लिस्ट - जो आपकी साइट के अंदर 100% चलेगी
 const myGames = [
-    { 
-        name: "Subway Surfers", 
-        icon: "🏃", 
+    { name: "Subway Surfers",icon: "🏃", 
         // पोकी की जगह गेमपिक्स का लिंक, जो ब्लॉक नहीं होता
         url: "https://www.gamepix.com/live/subway-surfers" 
     },
-    { 
-        name: "Ludo Legend", 
-        icon: "🎲", 
+    { name: "Ludo Legend",icon: "🎲", 
         url: "https://www.gamepix.com/live/ludo-legend" 
     },
-    { 
-       name: "Candy Riddle", 
-        icon: "🍬", 
+    { name: "Candy Riddle",icon: "🍬", 
         url: "https://www.gamepix.com/live/candy-riddles" 
     },
-    { 
-        name: "Moto X3M", 
-        icon: "🏍️", 
+    { name: "Moto X3M",icon: "🏍️", 
         url: "https://www.gamepix.com/live/moto-x3m" 
     },
-    { 
-        name: "Pac-Man", 
-        icon: "🍕", 
+    { name: "Pac-Man",icon: "🍕", 
         url: "https://www.google.com/logos/2010/pacman10-i.html" 
     }
 ];
