@@ -51,11 +51,7 @@
         <div class="card" onclick="openWebGame('https://www.gamepix.com/live/candy-riddles')">
             <div class="icon">🍬</div>
             <span class="game-name">Candy Web</span>
-            <div class="play-tag web-tag">WEB PLAY</div>
-        </div>
-        <div class="card" onclick="openWebGame('https://www.google.com/logos/2010/pacman10-i.html')">
-            <div class="icon">🍕</div>
-            <span class="game-name">Pac-Man</span>
+            <div class="play-tag web-tag">WEB span>
             <div class="play-tag web-tag">WEB PLAY</div>
         </div>
     </div>
