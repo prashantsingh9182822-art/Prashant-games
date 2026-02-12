@@ -87,29 +87,61 @@
             <span id="current-game-title" style="color:#00ff00; font-weight:bold;">GAME LOADING...</span>
             <button onclick="closeWebGame()" style="background:#ff4444; color:white; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer;">✕ EXIT</button>
         </div>
-        <iframe id="game-frame" src=""></iframe>
+        <iframe id="game-frame" src="" allow="autoplay; fullscreen; keyboard" allowfullscreen="true"></iframe>
+
     </div>
 
 <script>
-    // नए गेम यहाँ आसानी से जोड़ें
-    const myGames = [
-        { name: "Ludo Legend", icon: "🎲", url: "https://www.gamepix.com/live/ludo-legend" },
-        { name: "Candy Riddle", icon: "🍬", url: "https://www.gamepix.com/live/candy-riddles" },
-        { name: "Pac-Man", icon: "🍕", url: "https://www.google.com/logos/2010/pacman10-i.html" },
-        { name: "Bubble Shooter", icon: "🔵", url: "https://www.gamepix.com/live/bubble-shooter" }
-    ];
+    // अपडेटेड गेम लिस्ट - जो आपकी साइट के अंदर 100% चलेगी
+const myGames = [
+    { 
+        name: "Subway Surfers", 
+        icon: "🏃", 
+        // पोकी की जगह गेमपिक्स का लिंक, जो ब्लॉक नहीं होता
+        url: "https://www.gamepix.com/live/subway-surfers" 
+    },
+    { 
+        name: "Ludo Legend", 
+        icon: "🎲", 
+        url: "https://www.gamepix.com/live/ludo-legend" 
+    },
+    { 
+        name: "Candy Riddle", 
+        icon: "🍬", 
+        url: "https://www.gamepix.com/live/candy-riddles" 
+    },
+    { 
+        name: "Moto X3M", 
+        icon: "🏍️", 
+        url: "https://www.gamepix.com/live/moto-x3m" 
+    },
+    { 
+        name: "Pac-Man", 
+        icon: "🍕", 
+        url: "https://www.google.com/logos/2010/pacman10-i.html" 
+    }
+];
 
-    function loadGames() {
-        const list = document.getElementById("dynamic-game-list");
-        myGames.forEach(game => {
-            const gameCard = `
-                <div class="card" onclick="openWebGame('${game.url}', '${game.name}')">
-                    <div class="icon">${game.icon}</div>
-                    <span class="game-name">${game.name}</span>
-                    <div class="play-tag">WEB PLAY</div>
-                </div>`;
-            list.innerHTML += gameCard;
-        });
+// बेहतर डायरेक्ट ओपन फंक्शन
+function openWebGame(url, title) {
+    const container = document.getElementById("webgame-container");
+    const frame = document.getElementById("game-frame");
+    const titleText = document.getElementById("current-game-title");
+    
+    // स्क्रीन को साफ़ करें और लोडिंग दिखाएं
+    titleText.innerText = "लोड हो रहा है: " + title + "...";
+    frame.src = url; 
+    
+    // गेम विंडो खोलें
+    container.style.display = "block";
+    document.body.style.overflow = "hidden";
+
+    // जब गेम पूरी तरह लोड हो जाए
+    frame.onload = function() {
+        titleText.innerText = title;
+    };
+}
+
     }
 
     function openWebGame(url, title) {
