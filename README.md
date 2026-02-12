@@ -160,4 +160,46 @@ function openWebGame(url, title) {
 </script>
 
 </body>
+<div id="webgame-container" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999;">
+    <div style="padding:10px; color:white; display:flex; justify-content:space-between; align-items:center; background:#222;">
+        <span id="current-game-title" style="font-weight:bold; font-family:sans-serif;">लोड हो रहा है...</span>
+        <button onclick="closeGame()" style="padding:5px 15px; cursor:pointer; background:red; color:white; border:none; border-radius:5px;">बन्द करें [X]</button>
+    </div>
+    <iframe id="game-frame" src="" style="width:100%; height:calc(100% - 45px); border:none;" allowfullscreen></iframe>
+</div>
+
+<div style="padding:20px; text-align:center;">
+    <h2>🎮 मेरी गेमिंग साइट</h2>
+    <button onclick="openWebGame('https://www.gamepix.com/live/subway-surfers', 'Subway Surfers')" style="padding:10px; margin:5px; cursor:pointer;">🏃 Subway Surfers खेलें</button>
+    <button onclick="openWebGame('https://www.gamepix.com/live/moto-x3m', 'Moto X3M')" style="padding:10px; margin:5px; cursor:pointer;">🏍️ Moto X3M खेलें</button>
+</div>
+
+<script>
+// गेम बंद करने का फंक्शन (जो आपके कोड में नहीं था)
+function closeGame() {
+    const container = document.getElementById("webgame-container");
+    const frame = document.getElementById("game-frame");
+    container.style.display = "none";
+    frame.src = ""; // गेम बंद होने पर लोड बंद कर देगा
+    document.body.style.overflow = "auto";
+}
+
+// आपका ओरिजिनल फंक्शन
+function openWebGame(url, title) {
+    const container = document.getElementById("webgame-container");
+    const frame = document.getElementById("game-frame");
+    const titleText = document.getElementById("current-game-title");
+    
+    titleText.innerText = "लोड हो रहा है: " + title + "...";
+    frame.src = url; 
+    
+    container.style.display = "block";
+    document.body.style.overflow = "hidden";
+
+    frame.onload = function() {
+        titleText.innerText = title;
+    };
+}
+</script>
+
 </html>
