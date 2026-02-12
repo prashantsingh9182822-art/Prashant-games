@@ -72,7 +72,7 @@
         <footer>
         <p>&copy; 2026 JOJO Gaming Portal - All Rights Reserved</p>
         
-        <p>संपर्क करें: <a href="mailto:prashantsinsh9182822@gmail.com" style="color: #00ff00; margin: 0;">prashantsingh9182822@gmail.com</a></p>
+        <p>संपर्क करें: <a href="mailto:prashantsingh9182822@gmail.com" style="color: #00ff00; margin: 0;">prashantsingh9182822@gmail.com</a></p>
 
         <div style="margin-top: 15px;">
             <a href="about.html">About Us</a>
