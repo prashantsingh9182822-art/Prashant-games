@@ -69,14 +69,18 @@
         </div>
     </div>
 
-    <footer>
+        <footer>
         <p>&copy; 2026 JOJO Gaming Portal - All Rights Reserved</p>
+        
+        <p>संपर्क करें: <a href="mailto:yourname@gmail.com" style="color: #00ff00; margin: 0;">yourname@gmail.com</a></p>
+
         <div style="margin-top: 15px;">
             <a href="about.html">About Us</a>
             <a href="privacy.html">Privacy Policy</a>
             <a href="contact.html">Contact Us</a>
         </div>
     </footer>
+
 
     <div id="webgame-container">
         <div class="close-bar">
