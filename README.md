@@ -141,7 +141,6 @@ function openWebGame(url, title) {
         titleText.innerText = title;
     };
 }
-
     }
 
     function openWebGame(url, title) {
